@@ -13,11 +13,13 @@ public class ComparableDemo {
     public static void main(String[] args) {
         Custom custom1 = new Custom("黄鹏飞", 7);
         Custom custom2 = new Custom("黄先生", 9);
+        Custom custom3 = new Custom("黄求", 6);
         System.out.println(custom1.compareTo(custom2));
 
-        Custom[] customs = new Custom[2];
+        Custom[] customs = new Custom[3];
         customs[0] = custom1;
         customs[1] = custom2;
+        customs[2] = custom3;
         Arrays.sort(customs);
         System.out.println(Arrays.toString(customs));
     }
@@ -43,6 +45,7 @@ class Custom implements Comparable<Custom> {
     @Override
     public int compareTo(Custom o) {
         // 表示从小到大排序
-        return this.sort - o.sort;
+//        return this.sort - o.sort;
+        return this.username.compareTo(o.username);
     }
 }
