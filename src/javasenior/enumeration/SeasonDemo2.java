@@ -14,13 +14,41 @@ public class SeasonDemo2 {
         System.out.println(summer);
 
 //        System.out.println(summer.getClass().getSuperclass());
+        System.out.println("******************");
+        // values()
+        Season2[] values = Season2.values();
+        for (Season2 season2 : values) {
+            System.out.println(season2);
+        }
+        // valueOf(String name)：根据提供的ObjName，返回对应的对象
+        // 如果没有ObjName的枚举类对象，则抛异常：IllegalArgumentException
+        Season2 winter = Season2.valueOf("WINTER");
+        System.out.println(winter);
+
+        System.out.println("******************");
+        summer.show();
+        winter.show();
     }
 }
 
-enum Season2 {
+interface Info {
+    void show();
+}
+
+enum Season2 implements Info{
     // 1.提供当前枚举类的多个对象：用,隔开 ;结束
-    SPRING("春天", "描述"),
-    SUMMER("夏天", "描述"),
+    SPRING("春天", "描述"){
+        @Override
+        public void show() {
+            System.out.println("春天悄悄过去");
+        }
+    },
+    SUMMER("夏天", "描述"){
+        @Override
+        public void show() {
+            System.out.println("夏天好热");
+        }
+    },
     AUTUMN("秋天", "描述"),
     WINTER("冬天", "描述");
 
@@ -41,6 +69,11 @@ enum Season2 {
 
     public String getSeasonDesc() {
         return seasonDesc;
+    }
+
+    @Override
+    public void show() {
+        System.out.println("我是默认实现");
     }
 
 //    // 5.其他述求：提供toString
