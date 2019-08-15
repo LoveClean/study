@@ -1,4 +1,4 @@
-package javasenior.collection;
+package javasenior.map;
 
 import java.util.*;
 
