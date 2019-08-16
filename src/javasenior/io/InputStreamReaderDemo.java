@@ -12,16 +12,21 @@ import java.nio.charset.StandardCharsets;
  */
 public class InputStreamReaderDemo {
     public static void main(String[] args) {
-        test1();
+        utf8ToGbk("hi.txt", "hiGbk.txt");
     }
 
-    private static void test1() {
+    private static void utf8ToGbk(String srcPath, String destPath) {
         FileInputStream fileInputStream = null;
+        FileOutputStream fileOutputStream = null;
         InputStreamReader inputStreamReader = null;
+        OutputStreamWriter outputStreamWriter = null;
         try {
-            File file = new File("hi.txt");
+            File file = new File(srcPath);
+            File file2 = new File(destPath);
             fileInputStream = new FileInputStream(file);
+            fileOutputStream = new FileOutputStream(file2);
             inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
+            outputStreamWriter = new OutputStreamWriter(fileOutputStream, "GBK");
 
             char[] chars = new char[10];
             int len;
@@ -30,15 +35,26 @@ public class InputStreamReaderDemo {
                 if (len == -1) {
                     break;
                 }
-                String str = new String(chars, 0, len);
-                System.out.println(str);
+                outputStreamWriter.write(chars, 0, len);
+//                String str = new String(chars, 0, len);
+//                System.out.println(str);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
+                outputStreamWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
                 inputStreamReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fileOutputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
