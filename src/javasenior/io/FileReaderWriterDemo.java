@@ -37,6 +37,7 @@ public class FileReaderWriterDemo {
                 }
                 fileWriter.write(chars, 0, len);
             }
+            System.out.println("复制成功");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
