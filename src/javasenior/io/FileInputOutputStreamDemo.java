@@ -14,27 +14,32 @@ import java.io.IOException;
  */
 public class FileInputOutputStreamDemo {
     public static void main(String[] args) {
-        copyFile();
+        long startTime = System.currentTimeMillis();
+        copyFile("测试文件.pdf", "测试文件2.pdf");
+        long endTime = System.currentTimeMillis();
+        //原时间为：87-94
+        System.out.println("时间为：" + (endTime - startTime));
     }
 
-    private static void copyFile() {
+    private static void copyFile(String srcPath, String destPath) {
         FileInputStream fileInputStream = null;
         FileOutputStream fileOutputStream = null;
         try {
-            File file = new File("图片1.png");
-            File file1 = new File("图片copy.png");
+            File file = new File(srcPath);
+            File file1 = new File(destPath);
             fileInputStream = new FileInputStream(file);
             fileOutputStream = new FileOutputStream(file1);
-            byte[] bytes = new byte[5];
+            byte[] bytes = new byte[1024];
             int len;
             while (true) {
                 len = fileInputStream.read(bytes);
                 if (len == -1) {
                     break;
                 }
-                for (int i = 0; i < len; i++) {
-                    fileOutputStream.write(bytes[i]);
-                }
+                fileOutputStream.write(bytes,0,len);
+//                for (int i = 0; i < len; i++) {
+//                    fileOutputStream.write(bytes[i]);
+//                }
             }
             System.out.println("复制成功");
         } catch (IOException e) {

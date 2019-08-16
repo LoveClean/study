@@ -128,13 +128,13 @@ public class FileReaderWriterDemo {
             char[] chars = new char[5];
             int len;
             while ((len = fileReader.read(chars)) != -1) {
-                // 方式一：
-                for (int i = 0; i < len; i++) {
-                    System.out.print(chars[i]);
-                }
-                // 方式二：
-//                String str = new String(chars, 0, len);
-//                System.out.print(str);
+//                // 方式一：不建议，严重影响性能
+//                for (int i = 0; i < len; i++) {
+//                    System.out.print(chars[i]);
+//                }
+                // 方式二：建议使用
+                String str = new String(chars, 0, len);
+                System.out.print(str);
             }
         } catch (IOException e) {
             e.printStackTrace();
