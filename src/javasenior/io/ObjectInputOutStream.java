@@ -11,18 +11,23 @@ import java.io.*;
  */
 public class ObjectInputOutStream {
     public static void main(String[] args) {
-//        testObjectOutputStream();
+        Person person = new Person("咸鱼", 20);
+        testObjectOutputStream(person);
         testObjectInputStream();
     }
 
     /**
      * 序列化过程
      */
-    private static void testObjectOutputStream() {
+    private static void testObjectOutputStream(Object object) {
         ObjectOutputStream objectOutputStream = null;
         try {
             objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("object.dat")));
-            objectOutputStream.writeObject(new String("我爱北京天安门"));
+
+            objectOutputStream.writeObject("我是String对象");
+            objectOutputStream.flush();
+
+            objectOutputStream.writeObject(object);
             objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,8 +47,12 @@ public class ObjectInputOutStream {
         ObjectInputStream objectInputStream = null;
         try {
             objectInputStream = new ObjectInputStream(new FileInputStream(new File("object.dat")));
+
             Object object = objectInputStream.readObject();
             System.out.println(object);
+
+            Object object2 = objectInputStream.readObject();
+            System.out.println(object2);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -53,5 +62,25 @@ public class ObjectInputOutStream {
                 e.printStackTrace();
             }
         }
+    }
+}
+
+class Person implements Serializable {
+    public static final long serialVersionUID = 4437658655552L;
+
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
