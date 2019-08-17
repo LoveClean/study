@@ -33,5 +33,10 @@
 * 性能监控工具、死锁原理、性能调优、类文件结构、字节码指令、方法调用、字节码执行引擎
 
 ## Java高级：
-* 多线程（继承Thread类、实现Runnable接口、常用方法、synchronized关键字和ReentrantLock类、线程通信、实现Callable接口和调用FutureTask类、线程池调用Executors类）
-* Java常用类（字符串相关的类(String、StringBuilder、StringBuffer)、日期时间API）
+* 多线程：继承Thread类、实现Runnable接口、常用方法、synchronized关键字和ReentrantLock类、线程通信、实现Callable接口和调用FutureTask类、线程池调用Executors类
+* Java常用类：字符串相关的类(String、StringBuilder、StringBuffer)、日期时间API、Comparable比较器、Comparator比较器、System类、Math类、BigInteger类、BigDecimal类
+* 枚举类、注解
+* 集合：Collection(List接口、Set接口)、Map
+* IO流：File类、字符流、字节流、缓冲流、转换流、对象流、随机存储文件流RandomAccessFile类
+* 网络编程：InetAddress类、TCP、UDP、URL
+* 反射：Class类、ClassLoader类加载器、创建运行时类的对象、动态代理
