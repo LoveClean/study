@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * 反射
+ * 反射：Class类
  *
  * @author huangpengfei
  * @version 1.0
@@ -14,13 +14,18 @@ import java.lang.reflect.Method;
  */
 public class ReflectionDemo {
     public static void main(String[] args) throws Exception {
-        // 反射之前，对于Person类的操作
-        test1();
-        System.out.println("****************");
-        // 反射之后，对于Person类的操作
-        test2();
+//        // 反射之前，对于Person类的操作
+//        test1();
+//        System.out.println("****************");
+//        // 反射之后，对于Person类的操作
+//        test2();
+
+        test3();
     }
 
+    /**
+     * 反射之前，对于Person类的操作
+     */
     private static void test1() {
         // 1.创建对象
         Person person = new Person("tom", 12);
@@ -32,6 +37,9 @@ public class ReflectionDemo {
         person.show();
     }
 
+    /**
+     * 反射之后，对于Person类的操作
+     */
     private static void test2() throws Exception {
         // 1.通过反射，创建对象
         Class<Person> personClass = Person.class;
@@ -67,6 +75,33 @@ public class ReflectionDemo {
         showNation.setAccessible(true);
         Object invoke2 = showNation.invoke(person2, "中国");
         System.out.println(invoke2);
+    }
+
+    /**
+     * 实例化Class的四种方式
+     */
+    private static void test3() throws ClassNotFoundException {
+        // 1.调用运行时类的属性：.class
+        Class<Person> clazz1 = Person.class;
+        System.out.println(clazz1);
+
+        // 2.调用运行时类的对象，调用getClass()
+        Person person = new Person();
+        Class<? extends Person> clazz2 = person.getClass();
+        System.out.println(clazz2);
+
+        // 3.调用Class的静态方法：forName(String classPath)
+        Class<?> clazz3 = Class.forName("javasenior.reflect.Person");
+        System.out.println(clazz3);
+
+        // 4.使用类加载器：ClassLoader
+        ClassLoader classLoader = ReflectionDemo.class.getClassLoader();
+        Class<?> clazz4 = classLoader.loadClass("javasenior.reflect.Person");
+        System.out.println(clazz4);
+
+        System.out.println(clazz1 == clazz2);
+        System.out.println(clazz1 == clazz3);
+        System.out.println(clazz1 == clazz4);
     }
 }
 
