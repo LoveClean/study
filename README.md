@@ -24,13 +24,13 @@
 * UML类图六大关系：依赖、泛化、实现、关联、聚合、组合
 
 创建型设计模式：
-* 抽象工厂模式、建造者模式、工厂方法模式、原型模式、单例模式
+> 抽象工厂模式、建造者模式、工厂方法模式、原型模式、单例模式
 
 结构型设计模式：
-* 适配器模式、桥接模式、组合模式、装饰者模式、外观模式、享元模式、代理模式
+> 适配器模式、桥接模式、组合模式、装饰者模式、外观模式、享元模式、代理模式
 
 行为型设计模式：
-* 职责链模式、命令模式、解释器模式、迭代器模式、中介者模式、备忘录模式、观察者模式、状态模式、策略模式、模板方法模式、访问者模式
+> 职责链模式、命令模式、解释器模式、迭代器模式、中介者模式、备忘录模式、观察者模式、状态模式、策略模式、模板方法模式、访问者模式
 
 ## JVM：
 * 类加载机制（加载、连接、初始化）、类加载器（根/启动、扩展、系统/应用、用户自定义）、双亲委托机制
@@ -41,21 +41,21 @@
 
 ## Java高级：
 多线程：
-* 继承Thread类、实现Runnable接口、常用方法、synchronized关键字和ReentrantLock类、线程通信、实现Callable接口和调用FutureTask类、线程池调用Executors类
+> 继承Thread类、实现Runnable接口、常用方法、synchronized关键字和ReentrantLock类、线程通信、实现Callable接口和调用FutureTask类、线程池调用Executors类
 
 Java常用类：
-* 字符串相关的类(String、StringBuilder、StringBuffer)、日期时间API、Comparable比较器、Comparator比较器、System类、Math类、BigInteger类、BigDecimal类
+> 字符串相关的类(String、StringBuilder、StringBuffer)、日期时间API、Comparable比较器、Comparator比较器、System类、Math类、BigInteger类、BigDecimal类
 
 枚举类、注解
 
 集合：
-* Collection(List接口、Set接口)、Map
+> Collection(List接口、Set接口)、Map
 
 IO流：
-* File类、字符流、字节流、缓冲流、转换流、对象流、随机存储文件流RandomAccessFile类
+> File类、字符流、字节流、缓冲流、转换流、对象流、随机存储文件流RandomAccessFile类
 
 网络编程：
-* InetAddress类、TCP、UDP、URL
+> InetAddress类、TCP、UDP、URL
 
 反射：
-* Class类、ClassLoader类加载器、创建运行时类的对象、动态代理
+> Class类、ClassLoader类加载器、创建运行时类的对象、动态代理
