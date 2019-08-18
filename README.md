@@ -40,4 +40,7 @@
 * IO流：File类、字符流、字节流、缓冲流、转换流、对象流、随机存储文件流RandomAccessFile类
 * 网络编程：InetAddress类、TCP、UDP、URL
 * 反射机制：Class类、ClassLoader类加载器、创建运行时类的对象、动态代理、AOP
-* Java8的其他新特性：Lambda表达式
+* Java8的其他新特性：Lambda表达式、方法引用
+-------------------------------------
+* Java8的其他新特性：Stream API、Optional类（675-690）
+* Java9&10&11新特性（691-715）
