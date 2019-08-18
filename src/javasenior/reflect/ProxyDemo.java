@@ -16,9 +16,14 @@ public class ProxyDemo {
         SuperMan superMan = new SuperMan();
         // proxyInstance：代理类对象
         Human proxyInstance = (Human) ProxyFactory.getProxyInstance(superMan);
-        String belief = proxyInstance.getBelief();
-        System.out.println("*********************");
+        proxyInstance.getBelief();
         proxyInstance.eat("四川麻辣烫");
+
+        System.out.println("*********************");
+
+        NikeClothFactory nikeClothFactory = new NikeClothFactory();
+        ClothFactory proxyInstance1 = (ClothFactory) ProxyFactory.getProxyInstance(nikeClothFactory);
+        proxyInstance1.produceCloth();
     }
 }
 
