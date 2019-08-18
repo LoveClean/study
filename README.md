@@ -39,4 +39,4 @@
 * 集合：Collection(List接口、Set接口)、Map
 * IO流：File类、字符流、字节流、缓冲流、转换流、对象流、随机存储文件流RandomAccessFile类
 * 网络编程：InetAddress类、TCP、UDP、URL
-* 反射：Class类、ClassLoader类加载器、创建运行时类的对象、动态代理
+* 反射机制：Class类、ClassLoader类加载器、创建运行时类的对象、动态代理、AOP
