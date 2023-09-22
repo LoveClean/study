@@ -1,4 +1,4 @@
-package datastructures.search;
+package algorithm.search;
 
 /**
  * 插值查找算法

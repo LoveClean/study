@@ -1,4 +1,4 @@
-package datastructures.recursion;
+package algorithm.recursion;
 
 /**
  * 递归

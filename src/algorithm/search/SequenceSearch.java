@@ -1,4 +1,4 @@
-package datastructures.search;
+package algorithm.search;
 
 /**
  * 线性查找

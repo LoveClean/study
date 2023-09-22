@@ -1,18 +1,18 @@
-package datastructures.sort;
+package algorithm.sort;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 插入排序
+ * 希尔排序
  *
  * @author huangpengfei
  * @version 1.0
- * @date 2019/7/26 16:23
+ * @date 2019/7/26 21:27
  */
-public class InsertionSort {
+public class ShellSort {
     public static void main(String[] args) {
-//        int[] arr = {34, 9, -1, 10, 2};
+//        int[] arr = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
         // 创建要给150000个的随机的数组
         int[] arr = new int[150000];
         for (int i = 0; i < 150000; i++) {
@@ -26,7 +26,7 @@ public class InsertionSort {
         System.out.println("排序前的时间是=" + dateStr);
 
         // 测试选择排序
-        insertionSort(arr);
+        shellSort(arr);
 //        System.out.println(Arrays.toString(arr));
 
         Date date2 = new Date();
@@ -36,24 +36,28 @@ public class InsertionSort {
     }
 
     /**
-     * 插入排序，时间复杂度为O(n^2)
-     * 排序150000条的速度大概是1-2秒，速度比选择快
+     * 希尔排序，
+     * 排序150000条的速度大概是0-1秒，速度比插入快
      */
-    static void insertionSort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            // 定义待插入的数
-            int insertVal = arr[i];
-            // 获取前一个数的索引
-            int j = i - 1;
-            // 从当前i位置往前遍历
-            for (; j >= 0; j--) {
-                if (arr[j] > insertVal) {
-                    arr[j + 1] = arr[j];
-                } else {
-                    break;
+    static void shellSort(int[] arr) {
+
+        for (int gap = arr.length / 2; gap >= 1; gap = gap / 2) {
+            for (int i = gap; i < arr.length; i++) {
+                // 定义待插入的数
+                int insertVal = arr[i];
+                // 获取前一个数的索引
+                int j = i - gap;
+                // 从当前i位置往前遍历
+                for (; j >= 0; j -= gap) {
+                    if (arr[j] > insertVal) {
+                        arr[j + gap] = arr[j];
+                    } else {
+                        break;
+                    }
                 }
+                arr[j + gap] = insertVal;
             }
-            arr[j + 1] = insertVal;
+//            System.out.println(Arrays.toString(arr));
         }
     }
 }
