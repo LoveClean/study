@@ -9,15 +9,20 @@ package datastructures.hashtable;
  */
 public class HashTableDemo {
     public static void main(String[] args) {
+        Emp emp1 = new Emp(1, "1");
+        Emp emp2 = new Emp(2, "2");
+        Emp emp3 = new Emp(2, "1");
+
         HashTable hashTable = new HashTable(7);
-        Emp emp1 = new Emp(1, "Tom");
-        Emp emp2 = new Emp(2, "Jack");
-        Emp emp8 = new Emp(8, "Smith");
         hashTable.add(emp1);
         hashTable.add(emp2);
-        hashTable.add(emp8);
-        hashTable.list();
-        System.out.println(hashTable.findById(9));
+        System.out.println(hashTable.findById(1));
+        System.out.println(hashTable.findById(3));
+        hashTable.add(emp3);
+        System.out.println(hashTable.findById(2));
+        hashTable.remove(2);
+        System.out.println(hashTable.findById(2));
+//        hashTable.list();
     }
 
 }
@@ -73,6 +78,12 @@ class HashTable {
      */
     private int hashFund(int id) {
         return id % size;
+    }
+
+    public void remove(int key) {
+        // 根据员工的id，得到该员工应当到哪条链表查找
+        int empLinkedListArrayNo = hashFund(key);
+        empLinkedListArray[empLinkedListArrayNo].del(key);
     }
 }
 
@@ -168,6 +179,36 @@ class EmpLinkedList {
                 return null;
             }
             curEmp = curEmp.next;
+        }
+    }
+
+    /**
+     * 删除节点的信息，根据no编号来删除。
+     * 说明
+     * 1.head 不能动，因此我们需要一个temp辅助节点找到待删除的前一个节点
+     * 2.说明我们在比较时，是temp.next.no 和 需要删除的节点的no比较
+     */
+    public void del(int no) {
+        //判断是否为空
+        if (head.next == null) {
+            System.out.println("链表为空~~");
+            return;
+        }
+        Emp temp = head;
+        //遍历链表，找到最后
+        while (true) {
+            //说明temp已经在链表的最后
+            if (temp.next == null) {
+                System.out.printf("要删除的%d 节点不存在\n", no);
+                break;
+            }
+            //说明编号存在
+            if (temp.next.id == no) {
+                temp.next = temp.next.next;
+                break;
+            }
+            //如果没有找到最后，就将temp后移
+            temp = temp.next;
         }
     }
 }
