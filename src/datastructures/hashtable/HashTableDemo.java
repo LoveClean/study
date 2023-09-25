@@ -133,6 +133,10 @@ class EmpLinkedList {
         //否则
         Emp curEmp = head;
         while (true) {
+            if (curEmp.id == emp.id) {
+                curEmp.name = emp.name;
+                return;
+            }
             if (curEmp.next == null) {
                 break;
             }
