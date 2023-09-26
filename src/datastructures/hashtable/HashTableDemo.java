@@ -194,8 +194,10 @@ class EmpLinkedList {
      */
     public void del(int no) {
         //判断是否为空
-        if (head.next == null) {
-            System.out.println("链表为空~~");
+        if (head == null) return;
+        //如果要删除的节点是头节点
+        if (head.id == no) {
+            head = head.next;
             return;
         }
         Emp temp = head;
