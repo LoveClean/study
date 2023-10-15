@@ -48,29 +48,19 @@ public class QuickSort {
         // while循环的目的是让比pivot 值小放到左边，比pivot 值大放到右边
         while (l < r) {
             // 在pivot的左边一直找，直到找到大于等于pivot值，才退出
-            while (arr[l] < pivot) {
-                l++;
-            }
+            while (arr[l] < pivot) l++;
             // 在pivot的右边一直找，直到找到小于等于pivot值，才退出
-            while (arr[r] > pivot) {
-                r--;
-            }
+            while (arr[r] > pivot) r--;
             // 退出
-            if (l >= r) {
-                break;
-            }
+            if (l >= r) break;
             // 交换
             temp = arr[l];
             arr[l] = arr[r];
             arr[r] = temp;
 
             // 防止死循环（例如当l和r同时指向pivot时，比较难理解，建议画图理解）
-            if (arr[l] == pivot) {
-                r--;
-            }
-            if (arr[r] == pivot) {
-                l++;
-            }
+            if (arr[l] == pivot) r--;
+            if (arr[r] == pivot) l++;
 
         }
 //        System.out.println(Arrays.toString(arr));

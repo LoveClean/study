@@ -82,33 +82,21 @@ public class MergeSort {
 //                temp[t++] = arr[j++];
 //            }
 //        }
-        for (; i <= mid && j <= right; ) {
-            if (arr[i] <= arr[j]) {
-                temp[t++] = arr[i++];
-            } else if (arr[i] > arr[j]) {
-                temp[t++] = arr[j++];
-            }
+        while (i <= mid && j <= right) {
+            if (arr[i] <= arr[j]) temp[t++] = arr[i++];
+            else if (arr[i] > arr[j]) temp[t++] = arr[j++];
         }
 
         // 把有剩余数据的一边的数据依次全部填充到temp
-        if (i == mid + 1) {
-            for (; j <= right; ) {
-                temp[t++] = arr[j++];
-            }
-        } else if (j == right + 1) {
-            for (; i <= mid; ) {
-                temp[t++] = arr[i++];
-            }
-        }
+        if (i == mid + 1) while (j <= right) temp[t++] = arr[j++];
+        else if (j == right + 1) while (i <= mid) temp[t++] = arr[i++];
 
         //Todo 不太理解！！
         // 将temp数组的元素全部拷贝到arr
         // 注意，不是每次都拷贝所有
         t = 0;
         int tempLeft = left;
-        while (tempLeft <= right) {
-            arr[tempLeft++] = temp[t++];
-        }
+        while (tempLeft <= right) arr[tempLeft++] = temp[t++];
 
 //        System.out.println("temp=" + Arrays.toString(temp));
 //        System.out.println("arr=" + Arrays.toString(arr));
