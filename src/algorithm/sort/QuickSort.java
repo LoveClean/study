@@ -37,7 +37,7 @@ public class QuickSort {
     }
 
     /**
-     * 快速排序
+     * 快速排序（双指针版本）
      * 排序150000条的速度不到1秒，速度比希尔排序快
      */
     static void quickSort(int[] arr, int left, int right) {
