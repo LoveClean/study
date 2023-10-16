@@ -1,5 +1,9 @@
 package algorithm.sort;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+
 /**
  * 快速排序
  *
@@ -10,28 +14,27 @@ package algorithm.sort;
 public class QuickSort {
     public static void main(String[] args) {
 //        int[] arr = {-9, 78, 0, 23, -567, 70};
-        int[] arr = {12, 3, 1, 7, 5, 7, 9, 8, 6};
-        quickSort(arr, 0, 8);
+//        int[] arr = {12, 3, 1, 7, 5, 7, 9, 8, 6};
+//        quickSort(arr, 0, 8);
 
-//        // 创建要给150000个的随机的数组
-//        int[] arr = new int[150000];
-//        for (int i = 0; i < 150000; i++) {
-//            // 生成一个[0,10000000) 数
-//            arr[i] = (int) (Math.random() * 10000000);
-//        }
-//
-//        Date date = new Date();
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        String dateStr = simpleDateFormat.format(date);
-//        System.out.println("排序前的时间是=" + dateStr);
-//
-//        // 测试排序
-//        quickSort(arr, 0, arr.length - 1);
-////        System.out.println(Arrays.toString(arr));
-//
-//        Date date2 = new Date();
-//        String date2Str = simpleDateFormat.format(date2);
-//        System.out.println("排序后的时间是=" + date2Str);
+        // 创建要给150000个的随机的数组
+        int[] arr = new int[15000000];
+        for (int i = 0; i < 15000000; i++) {
+            // 生成一个[0,10000000) 数
+            arr[i] = (int) (Math.random() * 10000000);
+        }
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateStr = simpleDateFormat.format(date);
+        System.out.println("排序前的时间是=" + dateStr);
+
+        // 测试排序
+        quickSort(arr, 0, arr.length - 1);
+
+        Date date2 = new Date();
+        String date2Str = simpleDateFormat.format(date2);
+        System.out.println("排序后的时间是=" + date2Str);
     }
 
     /**
@@ -81,5 +84,33 @@ public class QuickSort {
 //            System.out.println(right);
             quickSort(arr, l, right);
         }
+    }
+
+
+    /**
+     * 递归版本
+     */
+    private static void sort(int[] arr, int start, int end) {
+        if (start >= end) return;
+        int partition = partition(arr, start, end);
+        sort(arr, start, partition);
+        sort(arr, partition + 1, end);
+    }
+
+    private static int partition(int[] arr, int start, int end) {
+        int standardNum = arr[start];
+        int point = start;
+        int temp;
+        for (int i = start + 1; i <= end; i++) {
+            if (arr[i] > standardNum) {
+                point++;
+                temp = arr[point];
+                arr[point] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        arr[start] = arr[point];
+        arr[point] = standardNum;
+        return point;
     }
 }
