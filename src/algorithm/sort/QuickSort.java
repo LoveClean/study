@@ -14,7 +14,6 @@ import java.util.Date;
 public class QuickSort {
     public static void main(String[] args) {
 //        int[] arr = {-9, 78, 0, 23, -567, 70};
-//        int[] arr = {12, 3, 1, 7, 5, 7, 9, 8, 6};
 //        quickSort(arr, 0, 8);
 
         // 创建要给150000个的随机的数组
@@ -64,9 +63,8 @@ public class QuickSort {
             // 防止死循环（例如当l和r同时指向pivot时，比较难理解，建议画图理解）
             if (arr[l] == pivot) r--;
             if (arr[r] == pivot) l++;
-
         }
-//        System.out.println(Arrays.toString(arr));
+
         // 如果l == r，必须l++，r--，否则出现栈溢出
         if (l == r) {
             l++;
@@ -74,16 +72,8 @@ public class QuickSort {
         }
 
         //Todo 有点难理解，建议debug理解
-        if (left < r) {
-//            System.out.println("向左递归");
-//            System.out.println(left);
-            quickSort(arr, left, r);
-        }
-        if (right > l) {
-//            System.out.println("向右递归");
-//            System.out.println(right);
-            quickSort(arr, l, right);
-        }
+        if (left < r) quickSort(arr, left, r);
+        if (right > l) quickSort(arr, l, right);
     }
 
 
