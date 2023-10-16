@@ -78,7 +78,7 @@ public class QuickSort {
 
 
     /**
-     * 递归版本
+     * 递归版本（不如上一版，此版缺少随机性）
      */
     private static void sort(int[] arr, int start, int end) {
         if (start >= end) return;
